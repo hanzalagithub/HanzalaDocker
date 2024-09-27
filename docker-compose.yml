@@ -1,0 +1,11 @@
+# version: '3'
+services:
+  frontend:
+    image: ahmedhanzala01/frontend-app:latest  # Use the Docker Hub image for frontend
+    ports:
+      - "8080:80"
+
+  backend:
+    image: ahmedhanzala01/backend-app:latest  # Use the Docker Hub image for backend
+    ports:
+      - "3000:3000"
