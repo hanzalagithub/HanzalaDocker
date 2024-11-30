@@ -3,7 +3,7 @@ services:
   frontend:
     image: ahmedhanzala01/frontend-app:v1  # Use the Docker Hub image for frontend
     ports:
-      - "8080:80"
+      - "8081:80"
 
   backend:
     image: ahmedhanzala01/backend-app:v1  # Use the Docker Hub image for backend
