@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_CREDENTIALS = credentials('docker-hub-creds') // Set your Jenkins Docker Hub credentials ID
+        DOCKER_CREDENTIALS = credentials('docker-hub-creds') // Docker Hub credentials ID
     }
 
     stages {
@@ -14,24 +14,20 @@ pipeline {
 
         stage('Build Backend Image') {
             steps {
-                script {
-                    sh 'docker build -t ahmedhanzala01/backend-app:latest -f backend/Dockerfile ./backend'
-                }
+                sh 'docker build -t ahmedhanzala01/backend-app:latest -f backend/Dockerfile ./backend'
             }
         }
 
         stage('Build Frontend Image') {
             steps {
-                script {
-                    sh 'docker build -t ahmedhanzala01/frontend-app:latest -f frontend/Dockerfile ./frontend'
-                }
+                sh 'docker build -t ahmedhanzala01/frontend-app:latest -f frontend/Dockerfile ./frontend'
             }
         }
 
         stage('Push Images to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('', DOCKER_CREDENTIALS) {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
                         sh 'docker push ahmedhanzala01/backend-app:latest'
                         sh 'docker push ahmedhanzala01/frontend-app:latest'
                     }
