@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/your-repo-name.git' // Replace with your repo URL
+                git 'https://github.com/hanzalagithub/HanzalaDocker.git' // Replace with your repo URL
             }
         }
 
